@@ -9,6 +9,7 @@ import sys
 import boto3
 from PIL import Image
 
+
 if len(sys.argv) != 3:
     print("This script takes 3 parameters: [source-bucket] [destination-bucket]")
     sys.exit()
@@ -63,12 +64,13 @@ for y in range(tiles_height):
             destination_image.paste(img, (x * tile_size, y * tile_size))
 
 # save the output image to a temp file
-temp_file = tempfile.NamedTemporaryFile(suffix='.jpg')
-destination_image.save(temp_file)
-print(f"Creating temp file {temp_file.name}")
+with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as temp_file:
+    temp_file_path = temp_file.name
+    destination_image.save(temp_file_path)
+print(f"Creating temp file {temp_file_path}")
 
 destination_key = os.urandom(16).hex() + ".jpg"
-with open(temp_file, 'rb') as data:
+with open(temp_file_path, 'rb') as data:
     # copy the grid image to a randomly named object in the destination bucket
     s3.put_object(
         Bucket=destination_bucket,

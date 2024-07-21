@@ -1,3 +1,9 @@
+         ___        ______     ____ _                 _  ___  
+        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
+       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
+      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
+     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
+ ----------------------------------------------------------------- 
 # Image Processing Scripts
 
 ## Description
@@ -7,10 +13,18 @@ This project contains two scripts for image processing tasks. One script process
 ## Prerequisites
 
 - Python 3.x
-- Pillow library
-- boto3 library (for the S3 script)
 - Amazon Cloud9 environment
-- AWS credentials configured in your Cloud9 environment with the necessary permissions to access the S3 buckets.
+- AWS credentials configured in your Cloud9 environment with the necessary permissions to access the S3 buckets
+
+## Configure Amazon Cloud9 environment:
+
+- Disable AWS managed temporary credentials in your Cloud9 environment. 
+- Make sure your EC2 instance has an IAM role attached with the necessary permissions to access the S3 buckets.
+
+## Install the dependencies:
+
+   ```bash
+   pip install -r requirements.txt
 
 ## Scripts
 
@@ -26,33 +40,43 @@ This script reads images from the `your-image-input-bucket` S3 bucket, processes
 
 ###Running Script 1
 
-Navigate to the directory containing the main.py script in src/s3/local-script
-$ pip install -r requirements.txt
+    Make sure you are in the project root folder.
+    Run the script using the following command:
+	
+	```bash
+    python3 src/s3/local_script/main.py
 
-Run the script using the following command
-$python3 main.py
-
-Check for the .jpg grid image generated in /resources folder.
+    Check for the .jpg grid image generated in /resources folder.
 
 ###Running Script 2
 
--Ensure you have the required AWS credentials and permissions set up.
--Ensure you have both `your-image-input-bucket` and `your-image-destination` S3 buckets. 
--`your-image-input-bucket` need the .jpg images for the source bucket, you can use/ upload the images located in the resources/source directory with AWS CLI or AWS Management Console.
+- Ensure you have the required AWS credentials and permissions set up.
+- Ensure you have both `your-image-input-bucket` and `your-image-destination` S3 buckets. 
+- `your-image-input-bucket` need the .jpg images for the source bucket, you can use/ upload the images located in the resources/source directory with AWS CLI or AWS Management Console.
 
-Navigate to the directory containing the main.py script in src/s3/s3-script.
+    Make sure you are in the project root folder.
+    Run the script using the following command:
+	
+    ```bash 
+	python3 src/s3/s3_script//main.py [source bucket with the images] [destination bucket]
 
-Run the script using the following command:
-$python3 main.py [source bucket with the images] [destination bucket]
+    Check for the grid image in the generated presigned URL.
 
-Check for the grid image in the generated presigned URL.
+###Running the Tests
+
+    Run the tests:
+	
+	```bash
+	pytest tests/
 
 ###Notes
 
--Ensure that your AWS credentials are configured correctly in your Cloud9 environment.
--Modify the bucket names and directory paths as needed to match your setup.
--Both scripts assume that the images are in the .jpg format.
--Feel free to modify and extend these scripts to suit your specific use case.
+- Ensure that your AWS credentials are configured correctly in your Cloud9 environment.
+- Disable AWS managed temporary credentials in your Cloud9 environment. 
+- Make sure your EC2 instance has an IAM role attached with the necessary permissions to access the S3 buckets.
+- Modify the bucket names and directory paths as needed to match your setup.
+- Both scripts assume that the images are in the .jpg format.
+- Feel free to modify and extend these scripts to suit your specific use case.
 
 
 

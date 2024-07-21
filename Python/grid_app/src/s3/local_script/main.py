@@ -5,6 +5,7 @@ import glob
 import math
 from PIL import Image
 
+
 tile_size = 100
 # using the glob module in Python to search for all .jpg in the directory
 source_images = glob.glob('resources/source/*.jpg')
