@@ -1,0 +1,48 @@
+name: Enforce Commit Message Pattern
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  commit-message-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Commitlint
+        run: npm install @commitlint/{cli,config-conventional} --save-dev
+
+      - name: Create commitlint config
+        run: |
+          echo "module.exports = { extends: ['@commitlint/config-conventional'], rules: { 'header-pattern': [2, 'always', /^\[[A-Z]+-\d+\] .+$/] } };" > commitlint.config.js
+
+      - name: Run Commitlint
+        run: npx commitlint --from=$GITHUB_BASE_REF --to=$GITHUB_SHA
+
+      - name: Check commit messages
+        id: commit_check
+        run: |
+          commits=$(git log --format=%B ${{ github.event.before }}..${{ github.sha }} | cat)
+          regex='\[[A-Z]+-[0-9]+\] .+'
+          error=0
+          while IFS= read -r commit_message; do
+            if [[ ! $commit_message =~ $regex ]]; then
+              echo "Commit message does not match the pattern: '$commit_message'"
+              error=1
+            fi
+          done <<< "$commits"
+          exit $error
