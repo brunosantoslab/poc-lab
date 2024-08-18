@@ -84,15 +84,6 @@ celerybeat.pid
 # SageMath
 *.sage.py
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
 # PyCharm
 .idea/
 *.idea/
@@ -143,17 +134,6 @@ local.properties
 *.ipr
 *.iws
 .idea_modules/
-atlassian-ide-plugin.xml
-com_atlassian_jira_ui/
-intellij.idea.plugins.*
-sonar/
-target/
-.gradle/
-.build/
-.gradle/
-build/
-libs/
-build/libs/
 
 # Maven
 target/
@@ -172,7 +152,6 @@ out/
 
 # Code analysis reports
 reports/
-.report/
 .checkstyle/
 .findbugs/
 
@@ -197,16 +176,12 @@ ehthumbs.db
 *.swp
 *.swo
 *.bak
-*.swp
-*.swo
-*.db
 *.sqlite3
 *.log
 *.tgz
 *.gz
 *.zip
 *.tar
-*.tar.gz
 *.rar
 *.7z
 *.war

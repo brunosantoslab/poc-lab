@@ -61,3 +61,12 @@
 curl -X POST http://localhost:8080/api/v1/prompt \
     -H "Content-Type: application/json" \
     -d '{"prompt": "Explain the concept of microservices."}'
+	
+## API Usage Example
+
+Here is an example of how the system processes a prompt using the LangChain4j-based prompt response generator:
+
+![API Prompt Response](./media/poc-1-api-prompt-response.png)
+
+This example shows a POST request to the `/api/v1/prompt` endpoint with the prompt "Explain the concept of chronion." The system returns a detailed explanation of the concept in response.
+
