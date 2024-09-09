@@ -61,7 +61,8 @@
 curl -X POST http://localhost:8080/api/v1/prompt \
     -H "Content-Type: application/json" \
     -d '{"prompt": "Explain the concept of microservices."}'
-	
+```	
+
 ## API Usage Example
 
 Here is an example of how the system processes a prompt using the LangChain4j-based prompt response generator:
