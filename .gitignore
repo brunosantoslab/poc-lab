@@ -61,7 +61,6 @@ build/
 *.pyc
 local_settings.py
 db.sqlite3
-media
 
 # Flask
 instance/
@@ -72,7 +71,6 @@ instance/
 
 # Sphinx
 docs/_build/
-target/
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
@@ -188,3 +186,36 @@ ehthumbs.db
 *.ear
 *.pid
 *.pid.lock
+
+# Maven wrapper
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Build directories
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
+
+# Allows folder 'media' to be tracked
+!media/
