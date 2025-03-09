@@ -12,10 +12,10 @@
 	</parent>
 
 	<groupId>app.brunosantos</groupId>
-	<artifactId>sgc-hello</artifactId>
+	<artifactId>gateway-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sgc-hello</name>
-	<description>Spring Cloud Gateway Hello World</description>
+	<name>gateway-service</name>
+	<description>Spring Cloud Gateway App</description>
 
 	<properties>
 		<java.version>17</java.version>
