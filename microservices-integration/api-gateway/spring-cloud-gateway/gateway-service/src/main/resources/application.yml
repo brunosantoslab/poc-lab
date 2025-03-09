@@ -1,0 +1,23 @@
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: get-example
+          uri: http://localhost:9001  # http-response-simulator service URL
+          predicates:
+            - Path=/simulate/get
+            - Method=GET
+        - id: post-example
+          uri: http://localhost:9001  #  http-response-simulator service URL
+          predicates:
+            - Path=/simulate/post
+            - Method=POST
+          filters:
+            - SetRequestHeader=X-Custom-Header, some-value
+        - id: status-check
+          uri: http://localhost:9001  # http-response-simulator service URL
+          predicates:
+            - Path=/simulate/status
+            - Method=GET
